@@ -48,6 +48,8 @@ public class MealsUtil {
     }
 
     private static MealTo createTo(Meal meal, boolean excess) {
-        return new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
+        MealTo newMealTo = new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
+        newMealTo.setId(meal.getId());
+        return newMealTo;
     }
 }
