@@ -35,7 +35,11 @@
                 </form>
             </div>
             <div class="card-footer text-right">
-                <button class="btn btn-primary" onclick="ctx.updateTable()">
+                <button class="btn btn-danger" onclick="clearFilter()">
+                    <span class="fa fa-remove"></span>
+                    <spring:message code="common.cancel"/>
+                </button>
+                <button class="btn btn-primary" onclick="updateFilteredTable()">
                     <span class="fa fa-filter"></span>
                     <spring:message code="meal.filter"/>
                 </button>

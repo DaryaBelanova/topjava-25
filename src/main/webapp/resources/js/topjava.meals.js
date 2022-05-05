@@ -11,9 +11,23 @@ const ctx = {
     }
 }
 
+function updateFilteredTable() {
+    $.ajax({
+        type: "GET",
+        url: "profile/meals/filter",
+        data: $("#filter").serialize()
+    }).done(updateTableByData);
+}
+
+function clearFilter() {
+    $("#filter")[0].reset();
+    $.get(mealAjaxUrl, updateTableByData);
+}
+
 $(function () {
-    makeEditable(
-        $("#datatable").DataTable({
+    makeEditable({
+        ajaxUrl: "profile/meals",
+        datatableApi: $("#datatable").DataTable({
             "paging": false,
             "info": true,
             "columns": [
@@ -41,6 +55,7 @@ $(function () {
                     "desc"
                 ]
             ]
-        })
-    );
+        }),
+        updateTable: updateFilteredTable
+    });
 });
